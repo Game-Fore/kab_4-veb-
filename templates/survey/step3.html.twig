@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Шаг 3</h2>
+
+{% for message in app.flashes('success') %}
+    <div class="flash">{{ message }}</div>
+{% endfor %}
+
+<form method="post">
+    <input type="text" name="email" value="{{ data.email ?? '' }}">
+    <br><br>
+    <button>Завершить</button>
+</form>
+{% endblock %}

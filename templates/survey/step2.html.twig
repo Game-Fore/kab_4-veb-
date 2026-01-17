@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Шаг 2</h2>
+
+{% for message in app.flashes('success') %}
+    <div class="flash">{{ message }}</div>
+{% endfor %}
+
+<form method="post">
+    <select name="choice">
+        <option value="A">Вариант A</option>
+        <option value="B">Вариант B</option>
+        <option value="C">Вариант C</option>
+    </select>
+    <br><br>
+    <button>Далее</button>
+</form>
+{% endblock %}

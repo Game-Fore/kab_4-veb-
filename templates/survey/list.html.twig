@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Результаты</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Шаг 1</th>
+        <th>Шаг 2</th>
+        <th>Шаг 3</th>
+    </tr>
+
+    {% for survey in surveys %}
+        <tr>
+            <td>{{ survey.step_1.about }}</td>
+            <td>{{ survey.step_2.choice }}</td>
+            <td>{{ survey.step_3.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

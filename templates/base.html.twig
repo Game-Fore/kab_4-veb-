@@ -1,17 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Лабораторная{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            padding: 20px;
+        }
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+            background: #222;
+            color: white;
+
+            padding: 15px 20px;
+            margin: 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .cookie-banner button {
+            padding: 8px 16px;
+            background: #4caf50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .cookie-banner button:hover {
+            background: #45a049;
+        }
+
+    </style>
+</head>
+{% if app.request.cookies.get('cookie_apply') != 'true' %}
+    <form method="post" action="{{ path('cookie_accept') }}" class="cookie-banner">
+        <span>Этот сайт использует Cookie</span>
+        <button type="submit">Принять</button>
+    </form>
+{% endif %}
+
+<body>
+
+<div class="content">
+
+    {% block body %}{% endblock %}
+</div>
+
+</body>
 </html>
