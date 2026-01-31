@@ -48,11 +48,14 @@
     </style>
 </head>
 {% if app.request.cookies.get('cookie_apply') != 'true' %}
-    <form method="post" action="{{ path('cookie_accept') }}" class="cookie-banner">
+<div class="cookie-banner">
+    <form method="post" action="{{ path('cookie_accept') }}">
         <span>Этот сайт использует Cookie</span>
         <button type="submit">Принять</button>
     </form>
+</div>
 {% endif %}
+
 
 <body>
 
